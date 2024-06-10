@@ -6,42 +6,40 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import { Button,  } from '@mui/material'
+import { Button } from '@mui/material'
 import { Link } from 'react-router-dom';
+
 
 
 function createData(
     
-    rutas= string,
-    tipo= string,
-    dias= string,
-    descripcion = string,
+    sector= string,
+    ruta= string,
+    fecha= string,
+    reporte = string,
     
   ) {
-    return { rutas, tipo, dias, descripcion };
+    return { sector, ruta, fecha, reporte };
   }
 
   const rows = [
-    createData('Ruta 1', 'Nocturno', 'Lunes - Miercoles -Viernes','Av. Moran Valverde'),
-    createData('Ruta 2', 'Diurno', 'Lunes - Miercoles -Viernes','Av. Mariscal Sucre'),
-    createData('Ruta 3', 'Diurno', 'Martes - Jueves - Sabado','Av. Quitumbe'),
+    createData('Quitumbe', 'Ruta 2', '2023/06/01','Falta de contenedores en la ruta'),
+    createData('Itchimbia', 'Ruta 1', '2023/05/31','Contenedores en mal estado'),
+    createData('Jipijapa', 'Ruta 3', '2023/07/05','Incumplimiento con el horario de recolección'),
 
   ];
 
-export default function Tabla() {
+export default function TablaReportes() {
   return (
     
     <div>
       <div  className='Navbar'>
         <div className='Opciones'>
           <p>Sectores</p>
-          
           <Link to={'/'} style={{ textDecoration: 'none' }}><p>Rutas</p></Link>
           <Link to={'/recolectores'} style={{ textDecoration: 'none' }}><p>Recolectores</p></Link>
           <Link to={'/notificacion'} style={{ textDecoration: 'none' }}><p>Notificaciones</p></Link>
           <Link to={'/reportes'} style={{ textDecoration: 'none' }}><p>Reportes</p></Link>
-          
         </div>
         <div className='Logo'>
          <h1>QuiCleanTo</h1>
@@ -52,8 +50,7 @@ export default function Tabla() {
       <div className='Cuerpo'>
         <div className='SobreTabla'>
           <div>
-          <LocalShippingIcon sx={{ fontSize: 40, marginRight: 2, margintop: 10, marginBottom: -2  }}></LocalShippingIcon>
-          <Button variant='contained' sx={{ backgroundColor: '#2E1572', color: 'white' }} >Agregar ruta</Button>  
+
           </div>
           <select name="languages" id="lang">
           <option value="select">Sector</option>
@@ -66,42 +63,37 @@ export default function Tabla() {
         <Table sx={{minWidth: 650}} aria-label='simple table' size='medium'>
           <TableHead sx={{ backgroundColor: '#E5E5E5' }}>
             <TableRow>
-              <TableCell align="left">Rutas</TableCell>
-              <TableCell align="right">Tipo</TableCell>
-              <TableCell align="right">Días</TableCell>
-              <TableCell align="right">Descripción</TableCell>
+              <TableCell align="left">Sector</TableCell>
+              <TableCell align="right">Ruta</TableCell>
+              <TableCell align="right">Fecha</TableCell>
+              <TableCell align="right">Reporte</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
                 <TableRow
-                key={row.rutas}
+                key={row.sector}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.rutas}
+                  {row.sector}
                 </TableCell>
-                <TableCell align="right">{row.tipo}</TableCell>
-                <TableCell align="right">{row.dias}</TableCell>
-                <TableCell align="right">{row.descripcion}</TableCell>
+                <TableCell align="right">{row.ruta}</TableCell>
+                <TableCell align="right">{row.fecha}</TableCell>
+                <TableCell align="right">{row.reporte}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
         <div className='BotonesAbajo'>
-          
         <Button variant='contained' sx={{ backgroundColor: '#5125AD', color: 'white' }}>Detalles</Button>
-        <Button variant='contained' sx={{ backgroundColor: '#5125AD', color: 'white' }}>Editar</Button>
         <Button variant='contained' sx={{ backgroundColor: '#5125AD', color: 'white' }}>Eliminar</Button>
         </div>
       </div>
 
 
-
-
-
-
     </div>
   )
 }
+

@@ -14,7 +14,15 @@
     justify-content: space-around;
     align-items: center;
     font-size: 20px;
+    text-decoration: none;
 }
+
+.Opciones p{
+    text-decoration: none;
+    color: white;
+    
+}
+
 .Logo{
     flex: 1;
     justify-content: flex-end;
@@ -35,12 +43,16 @@
     margin-left: 0%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 
 .SobreTabla select{
     width: 200px;
+    height: 40px;
 }
+
+
 
 .BotonesAbajo{
     display: flex;
